@@ -86,6 +86,7 @@ public class UserController {
 	List<User> searchUserList(@RequestParam("searchText") String searchText) {
 		List<User> userList = null;
 		try {
+			////
 			userList = userService.searchUserEntity(searchText);
 			return userList;
 		} catch (Exception e) {
