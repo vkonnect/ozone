@@ -13,9 +13,6 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 
 @Embeddable
 @Access(AccessType.PROPERTY)
@@ -26,11 +23,9 @@ public class Auditable
     private static final long serialVersionUID = 1L;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date", updatable = false)
-    @CreationTimestamp
     private Date createdDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @UpdateTimestamp
     @Column(name = "modified_date", insertable = false)
     private Date modifiedDate;
 

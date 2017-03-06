@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<spring.version>4.0.5.RELEASE</spring.version>
-		<hibernate.version>4.3.5.Final</hibernate.version>
+		<hibernate.version>4.2.0.Final</hibernate.version>
 		<log4j.version>1.2.17</log4j.version>
 		<jdk.version>1.7</jdk.version>
 		<context.path>ozone</context.path>
@@ -35,11 +35,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -82,11 +77,20 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search</artifactId>
-			<version>${hibernate.version}</version>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-core</artifactId>
+    		<version>${hibernate.version}</version>
 		</dependency>
+		
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-search-orm -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-search-orm</artifactId>
+    <version>${hibernate.version}</version>
+</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 	</dependencies>

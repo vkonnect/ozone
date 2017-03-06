@@ -19,7 +19,7 @@
 		<!-- 
 		<property name="password" value="root" />
 		-->
-		<property name="password" value="toshashu123" />
+		<property name="password" value="r00t" />
 		<!--  <property name="username" value="stud-mgt" />
 		<property name="password" value="Stud3nt" />-->
 	</bean>
