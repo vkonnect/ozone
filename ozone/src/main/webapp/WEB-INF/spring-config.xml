@@ -16,9 +16,6 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/ozone_db" />
 		<property name="username" value="root" />
-		<!-- 
-		<property name="password" value="root" />
-		-->
 		<property name="password" value="r00t" />
 		<!--  <property name="username" value="stud-mgt" />
 		<property name="password" value="Stud3nt" />-->
