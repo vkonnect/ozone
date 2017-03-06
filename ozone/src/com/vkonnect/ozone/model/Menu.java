@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "menu")
+@JsonIgnoreProperties({"auditTrail"})
 public class Menu
     implements Serializable
 {

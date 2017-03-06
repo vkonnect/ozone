@@ -14,7 +14,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/institute_mgt_db" />
+		<property name="url" value="jdbc:mysql://localhost:3306/ozone_db" />
 		<property name="username" value="root" />
 		<!-- 
 		<property name="password" value="root" />
@@ -34,6 +34,8 @@
 				<value>com.vkonnect.ozone.model.Menu</value>
 				<value>com.vkonnect.ozone.model.HintQuestion</value>
 				<value>com.vkonnect.ozone.model.University</value>
+				<value>com.vkonnect.ozone.model.KeyPerson</value>
+				<value>com.vkonnect.ozone.model.Address</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -41,6 +43,8 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
 			</props>
 		</property>
 	</bean>
@@ -64,4 +68,6 @@
 	<bean id="hintQuestionServices" class="com.vkonnect.ozone.services.HintQuestionServiceImpl"></bean>
 	<bean id="universityServices" class="com.vkonnect.ozone.services.UniversityServiceImpl"></bean>
 	<bean id="universityPool" class="com.vkonnect.ozone.dao.UniversityPoolImpl"></bean>
+	<!--  <bean id="keyPersonServices" class="com.vkonnect.ozone.services.keyPersonServiceImpl"></bean>
+	<bean id="keyPersonPool" class="com.vkonnect.ozone.dao.KeyPersonPoolImpl"></bean>-->
 </beans>

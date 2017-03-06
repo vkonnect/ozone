@@ -23,7 +23,7 @@ import org.hibernate.search.annotations.Index;
 
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "loginpassword"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "loginpassword",""})
 public class User
     implements Serializable
 {
@@ -68,8 +68,8 @@ public class User
     private Date lastLogin;
 
 
-    // @Embedded
-    // Auditable auditTrail;
+     @Embedded
+     Auditable auditTrail;
 
     public long getId ()
     {
@@ -177,13 +177,13 @@ public class User
     }
 
 
-    // public Auditable getAuditTrail() {
-    // return auditTrail;
-    // }
-    //
-    // public void setAuditTrail(Auditable auditTrail) {
-    // this.auditTrail = auditTrail;
-    // }
+     public Auditable getAuditTrail() {
+     return auditTrail;
+     }
+    
+     public void setAuditTrail(Auditable auditTrail) {
+     this.auditTrail = auditTrail;
+     }
 
     public HintQuestion getQuestion ()
     {

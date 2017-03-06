@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "hint_question")
+@JsonIgnoreProperties({"auditTrail"})
 public class HintQuestion
     implements Serializable
 {
