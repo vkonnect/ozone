@@ -61,5 +61,20 @@ public class UniversityPoolImpl implements UniversityPool {
 		tx.commit();
 		return false;
 	}
+	
+	@Override
+	public boolean updateUniversityById(long id) throws Exception {
+		session = sessionFactory.openSession();
+		try {
+			tx = session.beginTransaction();
+			session.saveOrUpdate(id);;
+			tx.commit();
+			session.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 }

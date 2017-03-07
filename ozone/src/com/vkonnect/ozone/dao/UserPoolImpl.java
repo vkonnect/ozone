@@ -126,4 +126,20 @@ public class UserPoolImpl implements UserPool {
 			return new ArrayList<User>();
 		}
 	}
+	
+	@Override
+	public boolean updateUser(long id) throws Exception {
+		session = sessionFactory.openSession();
+		try {
+		Object userObject = session.load(User.class, id);
+		tx = session.getTransaction();
+		session.beginTransaction();
+		session.update(userObject);
+		tx.commit();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }
