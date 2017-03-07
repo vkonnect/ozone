@@ -31,5 +31,10 @@ public class UniversityServiceImpl implements UniversityService {
 	public boolean deleteEntity(long id) throws Exception {
 		return universityPool.deleteEntity(id);
 	}
+	
+	@Override
+	public boolean updateUniversityInfo(long id) throws Exception {
+		return universityPool.updateUniversityById(id);
+	}
 
 }

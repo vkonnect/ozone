@@ -11,4 +11,5 @@ public interface UserService {
 	public boolean deleteEntity(long id) throws Exception;
 	public boolean verifyUser(String userName,String password) throws Exception;
 	public List<User> searchUserEntity(String searchText) throws Exception;
+	public boolean updateEntity(long id) throws Exception;
 }

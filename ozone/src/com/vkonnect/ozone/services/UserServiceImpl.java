@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
 	public List<User> searchUserEntity(String searchText) throws Exception {
 		return userPool.searchEntityList(searchText);
 	}
+	
+	@Override
+	public boolean updateEntity(long id) throws Exception {
+		return userPool.updateUser(id);
+	}
 }
