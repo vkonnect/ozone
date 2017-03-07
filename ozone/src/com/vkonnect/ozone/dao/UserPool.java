@@ -12,4 +12,5 @@ public interface UserPool {
 	public boolean deleteEntity(long id) throws Exception;
 	public boolean verifyUser(String userName,String password) throws Exception;
 	public List<User> searchEntityList(String searchTerm) throws Exception;
+	public boolean updateUser(long id) throws Exception;
 }
