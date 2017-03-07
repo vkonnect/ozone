@@ -9,4 +9,5 @@ public interface UniversityService {
 	public University getEntityById(long id) throws Exception;
 	public List<University> getEntityList() throws Exception;
 	public boolean deleteEntity(long id) throws Exception;
+	public boolean updateUniversityInfo(long id) throws Exception;
 }
