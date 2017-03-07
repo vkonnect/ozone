@@ -86,11 +86,21 @@ public class UserController {
 	List<User> searchUserList(@RequestParam("searchText") String searchText) {
 		List<User> userList = null;
 		try {
-			////
 			userList = userService.searchUserEntity(searchText);
 			return userList;
 		} catch (Exception e) {
 			return new ArrayList<User>();
+		}
+	}
+	@RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+	public @ResponseBody
+	Status updateUser(@PathVariable("id") long id) {
+
+		try {
+			userService.updateEntity(id);
+			return new Status(1, "User deleted Successfully !");
+		} catch (Exception e) {
+			return new Status(0, e.toString());
 		}
 
 	}
