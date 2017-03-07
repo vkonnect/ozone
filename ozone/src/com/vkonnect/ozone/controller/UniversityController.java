@@ -76,6 +76,17 @@ public class UniversityController {
 		} catch (Exception e) {
 			return new Status(0, e.toString());
 		}
+	}
+	
+	@RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+	public @ResponseBody
+	Status updateUniversity(@PathVariable("id") long id) {
 
+		try {
+			universityService.updateUniversityInfo(id);
+			return new Status(1, "University deleted Successfully !");
+		} catch (Exception e) {
+			return new Status(0, e.toString());
+		}
 	}
 }
