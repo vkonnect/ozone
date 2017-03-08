@@ -97,7 +97,7 @@ public class UserController {
 	Status updateUser(@PathVariable("id") long id) {
 
 		try {
-			userService.updateEntity(id);
+			userService.updateUserEntity(id);
 			return new Status(1, "User deleted Successfully !");
 		} catch (Exception e) {
 			return new Status(0, e.toString());
