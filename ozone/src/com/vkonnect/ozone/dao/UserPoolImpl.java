@@ -131,13 +131,13 @@ public class UserPoolImpl implements UserPool {
 	public boolean updateUser(long id) throws Exception {
 		session = sessionFactory.openSession();
 		try {
-		Object userObject = session.load(User.class, id);
-		tx = session.getTransaction();
-		session.beginTransaction();
-		session.update(userObject);
-		tx.commit();
+			Object userObject = session.load(User.class, id);
+			tx = session.getTransaction();
+			session.beginTransaction();
+			session.update(userObject);
+			tx.commit();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			System.out.println("Found Exception in UserPoolImpl.updateUser(long id):: "+ex);
 			return false;
 		}
 		return true;
