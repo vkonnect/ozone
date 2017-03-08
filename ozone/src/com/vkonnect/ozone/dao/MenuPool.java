@@ -10,4 +10,5 @@ public interface MenuPool {
 	public Menu getEntityById(long id) throws Exception;
 	public List<Menu> getEntityList() throws Exception;
 	public boolean deleteEntity(long id) throws Exception;
+	public boolean updateMenuEntity(long id) throws Exception;
 }
