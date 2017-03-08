@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean updateEntity(long id) throws Exception {
-		return userPool.updateUser(id);
+	public boolean updateUserEntity(long id) throws Exception {
+		return userPool.updateUserEntity(id);
 	}
 }
