@@ -128,7 +128,7 @@ public class UserPoolImpl implements UserPool {
 	}
 	
 	@Override
-	public boolean updateUser(long id) throws Exception {
+	public boolean updateUserEntity(long id) throws Exception {
 		session = sessionFactory.openSession();
 		try {
 			Object userObject = session.load(User.class, id);
