@@ -76,6 +76,17 @@ public class HintQuestionController {
 		} catch (Exception e) {
 			return new Status(0, e.toString());
 		}
+	}
+	
+	@RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+	public @ResponseBody
+	Status updateHintQuestion(@PathVariable("id") long id) {
 
+		try {
+			hintQuestionService.updateHintQuestionEntity(id);
+			return new Status(1, "HintQuestion updated Successfully !");
+		} catch (Exception e) {
+			return new Status(0, e.toString());
+		}
 	}
 }
