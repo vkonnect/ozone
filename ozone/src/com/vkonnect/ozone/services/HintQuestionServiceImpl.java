@@ -32,4 +32,9 @@ public class HintQuestionServiceImpl implements HintQuestionService {
 		return hintQuestionPool.deleteEntity(id);
 	}
 
+	@Override
+	public boolean updateHintQuestionEntity(long id) throws Exception {
+		return hintQuestionPool.updateHintQuestionEntity(id);
+	}
+
 }
