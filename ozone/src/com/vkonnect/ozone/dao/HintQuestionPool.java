@@ -10,4 +10,5 @@ public interface HintQuestionPool {
 	public HintQuestion getEntityById(long id) throws Exception;
 	public List<HintQuestion> getEntityList() throws Exception;
 	public boolean deleteEntity(long id) throws Exception;
+	public boolean updateHintQuestionEntity(long id) throws Exception;
 }

@@ -51,8 +51,7 @@ public class HintQuestionPoolImpl implements HintQuestionPool {
 	}
 	
 	@Override
-	public boolean deleteEntity(long id)
-			throws Exception {
+	public boolean deleteEntity(long id) throws Exception {
 		session = sessionFactory.openSession();
 		Object o = session.load(HintQuestion.class, id);
 		tx = session.getTransaction();
@@ -60,6 +59,22 @@ public class HintQuestionPoolImpl implements HintQuestionPool {
 		session.delete(o);
 		tx.commit();
 		return false;
+	}
+
+	@Override
+	public boolean updateHintQuestionEntity(long id) throws Exception {
+		try {
+			session = sessionFactory.openSession();
+			Object obj = session.load(HintQuestion.class, id);
+			tx = session.getTransaction();
+			session.beginTransaction();
+			session.saveOrUpdate(obj);
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("Found Exception in HintQuestionPoolImple.updateHintQuestionEntity(long id):: "+ex);
+			return false;
+		}
+		return true;
 	}
 
 }
