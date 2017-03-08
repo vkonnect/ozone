@@ -61,4 +61,20 @@ public class MenuPoolImpl implements MenuPool {
 		return false;
 	}
 
+	@Override
+	public boolean updateMenuEntity(long id) throws Exception {
+		try {
+			session = sessionFactory.openSession();
+			Object obj = session.load(Menu.class, id);
+			tx = session.getTransaction();
+			session.beginTransaction();
+			session.saveOrUpdate(obj);
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("Found Exception in MenuPoolImpl.updateMenuEntity(long id):: "+ex);
+			return false;
+		}
+		return true;
+	}
+
 }

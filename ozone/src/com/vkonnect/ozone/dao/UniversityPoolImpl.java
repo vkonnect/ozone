@@ -51,8 +51,7 @@ public class UniversityPoolImpl implements UniversityPool {
 	}
 	
 	@Override
-	public boolean deleteEntity(long id)
-			throws Exception {
+	public boolean deleteEntity(long id) throws Exception {
 		session = sessionFactory.openSession();
 		Object o = session.load(University.class, id);
 		tx = session.getTransaction();
@@ -66,12 +65,13 @@ public class UniversityPoolImpl implements UniversityPool {
 	public boolean updateUniversityById(long id) throws Exception {
 		session = sessionFactory.openSession();
 		try {
+			Object obj = session.load(University.class, id);
 			tx = session.beginTransaction();
-			session.saveOrUpdate(id);;
+			session.saveOrUpdate(obj);
 			tx.commit();
 			session.close();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			System.out.println("Found Exception in UniversityPoolImple.updateUniversityById(long id):: "+ex);
 			return false;
 		}
 		return true;

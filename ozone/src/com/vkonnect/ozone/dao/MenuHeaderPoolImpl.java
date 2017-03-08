@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vkonnect.ozone.model.MenuHeader;
-import com.vkonnect.ozone.model.User;
 
 public class MenuHeaderPoolImpl implements MenuHeaderPool {
 
@@ -33,8 +32,7 @@ public class MenuHeaderPoolImpl implements MenuHeaderPool {
 	@Override
 	public MenuHeader getEntityById(long id) throws Exception {
 		session = sessionFactory.openSession();
-		MenuHeader menuHeader = (MenuHeader) session.load(MenuHeader.class,
-				new Long(id));
+		MenuHeader menuHeader = (MenuHeader) session.load(MenuHeader.class,	new Long(id));
 		tx = session.getTransaction();
 		session.beginTransaction();
 		tx.commit();
@@ -54,15 +52,30 @@ public class MenuHeaderPoolImpl implements MenuHeaderPool {
 	}
 	
 	@Override
-	public boolean deleteEntity(long id)
-			throws Exception {
+	public boolean deleteEntity(long id) throws Exception {
 		session = sessionFactory.openSession();
-		Object o = session.load(User.class, id);
+		Object o = session.load(MenuHeader.class, id);
 		tx = session.getTransaction();
 		session.beginTransaction();
 		session.delete(o);
 		tx.commit();
 		return false;
+	}
+
+	@Override
+	public boolean updateMenuHeaderEntity(long id) throws Exception {
+		try {
+			session = sessionFactory.openSession();
+			Object obj = session.load(MenuHeader.class, id);
+			tx = session.getTransaction();
+			session.beginTransaction();
+			session.saveOrUpdate(obj);
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("Found Exception in MenuHeaderPoolImpl.updateMenuHeaderEntity(long id):: "+ex);
+			return false;
+		}
+		return true;
 	}
 
 }
