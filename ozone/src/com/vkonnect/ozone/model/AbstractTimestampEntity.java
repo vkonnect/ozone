@@ -28,5 +28,6 @@ public abstract class AbstractTimestampEntity {
     @PreUpdate
     protected void onUpdate() {
     updated = new Date();
+    //sop
     }
 }
