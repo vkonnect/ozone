@@ -1,6 +1,5 @@
 package com.vkonnect.ozone.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vkonnect.ozone.model.Status;
@@ -77,20 +75,6 @@ public class UserController {
 			return new Status(1, "User deleted Successfully !");
 		} catch (Exception e) {
 			return new Status(0, e.toString());
-		}
-
-	}
-	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public @ResponseBody
-	List<User> searchUserList(@RequestParam("searchText") String searchText) {
-		List<User> userList = null;
-		try {
-			////
-			userList = userService.searchUserEntity(searchText);
-			return userList;
-		} catch (Exception e) {
-			return new ArrayList<User>();
 		}
 
 	}

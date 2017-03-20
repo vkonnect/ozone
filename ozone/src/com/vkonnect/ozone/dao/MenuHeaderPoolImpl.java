@@ -65,4 +65,17 @@ public class MenuHeaderPoolImpl implements MenuHeaderPool {
 		return false;
 	}
 
+    @Override
+    public boolean updateEntity (MenuHeader menuHeader)
+        throws Exception
+    {
+        session = sessionFactory.openSession();
+        tx = session.beginTransaction();
+        session.update(menuHeader);
+        tx.commit();
+        session.close();
+
+        return true;
+    }
+
 }

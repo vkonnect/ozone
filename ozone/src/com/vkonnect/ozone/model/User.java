@@ -6,7 +6,6 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,15 +14,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
 
 
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "loginpassword",""})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "loginpassword"})
 public class User
     implements Serializable
 {
@@ -39,13 +36,14 @@ public class User
     private String username;
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @Column(name = "passwordkey")
+    @JsonIgnore
     private String passwordkey;
 
     @Column(name = "first_name")
-    @Field(index=Index.YES, analyze=Analyze.YES)
     private String firstName;
 
     @Column(name = "last_name")
@@ -68,8 +66,8 @@ public class User
     private Date lastLogin;
 
 
-     @Embedded
-     Auditable auditTrail;
+    // @Embedded
+    // Auditable auditTrail;
 
     public long getId ()
     {
@@ -177,13 +175,13 @@ public class User
     }
 
 
-     public Auditable getAuditTrail() {
-     return auditTrail;
-     }
-    
-     public void setAuditTrail(Auditable auditTrail) {
-     this.auditTrail = auditTrail;
-     }
+    // public Auditable getAuditTrail() {
+    // return auditTrail;
+    // }
+    //
+    // public void setAuditTrail(Auditable auditTrail) {
+    // this.auditTrail = auditTrail;
+    // }
 
     public HintQuestion getQuestion ()
     {

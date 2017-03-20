@@ -2,23 +2,21 @@ package com.vkonnect.ozone.model;
 
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name = "university")
-@JsonIgnoreProperties({"auditTrail"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class University
     implements Serializable
 {
@@ -73,12 +71,20 @@ public class University
     private String remark;
 
     @Embedded
+    @JsonIgnore
     Auditable auditTrail;
 
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.E)
-    @OneToMany(mappedBy = "university", cascade = CascadeType.ALL)
-    //@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-    private List<KeyPerson> keyPersons;
+    @Column(name = "keyposition")
+    private String keyposition;
+
+    @Column(name = "kpname")
+    private String kpname;
+
+    @Column(name = "kpemail")
+    private String kpemail;
+
+    @Column(name = "kpphone")
+    private String kpphone;
 
 
     public long getId ()
@@ -105,6 +111,210 @@ public class University
     }
 
 
+    public String getKeyposition ()
+    {
+        return keyposition;
+    }
+
+
+    public void setKeyposition (String keyposition)
+    {
+        this.keyposition = keyposition;
+    }
+
+
+    public String getKpname ()
+    {
+        return kpname;
+    }
+
+
+    public void setKpname (String kpname)
+    {
+        this.kpname = kpname;
+    }
+
+
+    public String getKpemail ()
+    {
+        return kpemail;
+    }
+
+
+    public void setKpemail (String kpemail)
+    {
+        this.kpemail = kpemail;
+    }
+
+
+    public String getKpphone ()
+    {
+        return kpphone;
+    }
+
+
+    public void setKpphone (String kpphone)
+    {
+        this.kpphone = kpphone;
+    }
+
+
+    public String getName ()
+    {
+        return name;
+    }
+
+
+    public void setName (String name)
+    {
+        this.name = name;
+    }
+
+
+    public String getCode ()
+    {
+        return code;
+    }
+
+
+    public void setCode (String code)
+    {
+        this.code = code;
+    }
+
+
+    public String getProfile ()
+    {
+        return profile;
+    }
+
+
+    public void setProfile (String profile)
+    {
+        this.profile = profile;
+    }
+
+
+    public byte[] getLogo ()
+    {
+        return logo;
+    }
+
+
+    public void setLogo (byte[] logo)
+    {
+        this.logo = logo;
+    }
+
+
+    public String getUrl ()
+    {
+        return url;
+    }
+
+
+    public void setUrl (String url)
+    {
+        this.url = url;
+    }
+
+
+    public String getEmail ()
+    {
+        return email;
+    }
+
+
+    public void setEmail (String email)
+    {
+        this.email = email;
+    }
+
+
+    public String getPhone1 ()
+    {
+        return phone1;
+    }
+
+
+    public void setPhone1 (String phone1)
+    {
+        this.phone1 = phone1;
+    }
+
+
+    public String getPhone2 ()
+    {
+        return phone2;
+    }
+
+
+    public void setPhone2 (String phone2)
+    {
+        this.phone2 = phone2;
+    }
+
+
+    public String getAddress ()
+    {
+        return address;
+    }
+
+
+    public void setAddress (String address)
+    {
+        this.address = address;
+    }
+
+
+    public String getState ()
+    {
+        return state;
+    }
+
+
+    public void setState (String state)
+    {
+        this.state = state;
+    }
+
+
+    public String getCity ()
+    {
+        return city;
+    }
+
+
+    public void setCity (String city)
+    {
+        this.city = city;
+    }
+
+
+    public String getPincode ()
+    {
+        return pincode;
+    }
+
+
+    public void setPincode (String pincode)
+    {
+        this.pincode = pincode;
+    }
+
+
+    public byte[] getMap ()
+    {
+        return map;
+    }
+
+
+    public void setMap (byte[] map)
+    {
+        this.map = map;
+    }
+
+
     public Auditable getAuditTrail ()
     {
         return auditTrail;
@@ -116,26 +326,4 @@ public class University
         this.auditTrail = auditTrail;
     }
 
-
-	public List<KeyPerson> getKeyPersons() {
-		return keyPersons;
-	}
-
-
-	public void setKeyPersons(List<KeyPerson> keyPersons) {
-		this.keyPersons = keyPersons;
-	}
-
-
-
-    // public Address getAddress ()
-    // {
-    // return address;
-    // }
-    //
-    //
-    // public void setAddress (Address address)
-    // {
-    // this.address = address;
-    // }
 }

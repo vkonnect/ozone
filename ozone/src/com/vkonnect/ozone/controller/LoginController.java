@@ -57,7 +57,7 @@ public class LoginController
         boolean authenticated = true;
         try
         {
-            authenticated = true;//userService.verifyUser(userName, userPassword);
+            authenticated = userService.verifyUser(userName, userPassword);
         }
         catch (Exception e)
         {

@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
+
 @Embeddable
 @Access(AccessType.PROPERTY)
 public class Auditable
@@ -114,18 +115,18 @@ public class Auditable
     }
 
 
-    @PrePersist
-    protected void onCreate ()
-    {
-        modifiedDate = createdDate = new Date();
-        createdBy = modifiedBy = "root";
-    }
-
-
-    @PreUpdate
-    protected void onUpdate ()
-    {
-        modifiedDate = new Date();
-        modifiedBy = "root";
-    }
+    // @PrePersist
+    // protected void onCreate ()
+    // {
+    //// modifiedDate = createdDate = new Date();
+    //// createdBy = modifiedBy = "root";
+    // }
+    //
+    //
+    // @PreUpdate
+    // protected void onUpdate ()
+    // {
+    // // modifiedDate = new Date();
+    // // modifiedBy = "root";
+    // }
 }

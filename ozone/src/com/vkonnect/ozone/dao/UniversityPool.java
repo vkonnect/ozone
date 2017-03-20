@@ -10,4 +10,5 @@ public interface UniversityPool {
 	public University getEntityById(long id) throws Exception;
 	public List<University> getEntityList() throws Exception;
 	public boolean deleteEntity(long id) throws Exception;
+	public boolean updateEntity(University university) throws Exception;
 }

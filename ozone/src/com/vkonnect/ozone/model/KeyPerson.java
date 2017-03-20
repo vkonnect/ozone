@@ -3,21 +3,17 @@ package com.vkonnect.ozone.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 
-@Entity
-@Table(name = "keyperson")
-@JsonIgnoreProperties({"auditTrail"})
+@Embeddable
+@Access(AccessType.PROPERTY)
 public class KeyPerson
     implements Serializable
 {
@@ -41,11 +37,6 @@ public class KeyPerson
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne
-//    @Cache (usage=CacheConcurrencyStrategy.TRANSACTIONAL)
-    @JoinColumn(name = "university_id")
-    University university;
-    
     @Embedded
     Auditable auditTrail;
 
@@ -122,13 +113,10 @@ public class KeyPerson
     }
 
 
-    public University getUniversity() {
-		return university;
-	}
+    public static long getSerialversionuid ()
+    {
+        return serialVersionUID;
+    }
 
-
-	public void setUniversity(University university) {
-		this.university = university;
-	}
 
 }

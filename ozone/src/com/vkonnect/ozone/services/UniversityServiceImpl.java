@@ -32,4 +32,11 @@ public class UniversityServiceImpl implements UniversityService {
 		return universityPool.deleteEntity(id);
 	}
 
+    @Override
+    public boolean updateEntity (University university)
+        throws Exception
+    {
+        return universityPool.updateEntity(university);
+    }
+
 }

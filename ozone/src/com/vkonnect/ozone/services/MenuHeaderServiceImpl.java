@@ -32,4 +32,11 @@ public class MenuHeaderServiceImpl implements MenuHeaderService {
 		return menuHeaderPool.deleteEntity(id);
 	}
 
+    @Override
+    public boolean updateEntity (MenuHeader menuHeader)
+        throws Exception
+    {
+        return menuHeaderPool.updateEntity(menuHeader);
+    }
+
 }
