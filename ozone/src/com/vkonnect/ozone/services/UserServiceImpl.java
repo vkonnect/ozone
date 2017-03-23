@@ -62,4 +62,12 @@ public class UserServiceImpl
         // encryptpwd = CipherUtil.encrypt(encryptpwd, SALT);
         return userPool.verifyUser(userName, encryptpwd);
     }
+
+
+    @Override
+    public boolean updateEntity (User user)
+        throws Exception
+    {
+        return userPool.updateEntity(user);
+    }
 }

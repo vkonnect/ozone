@@ -9,4 +9,5 @@ public interface MenuService {
 	public Menu getEntityById(long id) throws Exception;
 	public List<Menu> getEntityList() throws Exception;
 	public boolean deleteEntity(long id) throws Exception;
+    public boolean updateEntity (Menu menu) throws Exception;
 }

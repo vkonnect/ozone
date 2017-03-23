@@ -32,4 +32,12 @@ public class MenuServiceImpl implements MenuService {
 		return menuPool.deleteEntity(id);
 	}
 
+    @Override
+    public boolean updateEntity (Menu menu)
+        throws Exception
+    {
+        return menuPool.updateEntity(menu);
+        
+    }
+
 }
