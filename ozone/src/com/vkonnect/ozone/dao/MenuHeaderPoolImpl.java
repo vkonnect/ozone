@@ -1,5 +1,6 @@
 package com.vkonnect.ozone.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -7,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.vkonnect.ozone.model.Auditable;
 import com.vkonnect.ozone.model.MenuHeader;
 import com.vkonnect.ozone.model.User;
 
@@ -21,13 +23,20 @@ public class MenuHeaderPoolImpl implements MenuHeaderPool {
 	@Override
 	public boolean addEntity(MenuHeader menuHeader) throws Exception {
 
-		session = sessionFactory.openSession();
-		tx = session.beginTransaction();
-		session.save(menuHeader);
-		tx.commit();
-		session.close();
-
-		return false;
+	    session = sessionFactory.openSession();
+        tx = session.beginTransaction();
+        Auditable auditable = new Auditable();
+        auditable.setActive(true);
+        auditable.setCreatedBy("nilesh");
+        auditable.setCreatedDate(new Date());
+        auditable.setDeleted(false);
+        auditable.setModifiedBy("nilesh");
+        auditable.setModifiedDate(new Date());
+        menuHeader.setAuditTrail(auditable);
+        session.save(menuHeader);
+        tx.commit();
+        session.close();
+        return true;
 	}
 
 	@Override
@@ -71,6 +80,14 @@ public class MenuHeaderPoolImpl implements MenuHeaderPool {
     {
         session = sessionFactory.openSession();
         tx = session.beginTransaction();
+        Auditable auditable = new Auditable();
+        auditable.setActive(true);
+        auditable.setCreatedBy("nilesh");
+        auditable.setCreatedDate(new Date());
+        auditable.setDeleted(false);
+        auditable.setModifiedBy("nilesh");
+        auditable.setModifiedDate(new Date());
+        menuHeader.setAuditTrail(auditable);
         session.update(menuHeader);
         tx.commit();
         session.close();
