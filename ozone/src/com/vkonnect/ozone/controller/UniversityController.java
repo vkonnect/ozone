@@ -51,7 +51,7 @@ public class UniversityController
         try
         {
             universityService.updateEntity(university);
-            return new Status(1, " ");
+            return new Status(1, "University updated Successfully !");
         }
         catch (Exception e)
         {
