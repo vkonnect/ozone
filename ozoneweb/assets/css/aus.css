@@ -1,0 +1,141 @@
+﻿/*General*/
+*, h1, h2, h3, h4, h5, h6
+{
+    font-family: 'Century Gothic' ,CenturyGothic,AppleGothic,sans-serif;
+}
+
+/*Login Page
+
+body.login-layout
+{
+    background: #8FBBB8 url('../../assets/images/aus/bg_green.jpg') center 0 no-repeat; /*background: #EF7D2D;
+}
+body.login-layout_blue
+{
+    background: #8FBBB8 url('../../assets/images/aus/bg_blue.png') center 0 no-repeat; /*background: #EF7D2D;
+}
+body.login-layout_orange
+{
+    background: #8FBBB8 url('../../assets/images/aus/bg_orange.jpg') center 0 no-repeat; /*background: #EF7D2D;
+}*/
+body.login-layout_yellow
+{
+    background: #FFDE1D url('../../assets/images/aus/bg_yellow.png') center 0 no-repeat; /*background: #EF7D2D;*/
+}
+.login-container
+{
+    width: 500px;
+}
+.login-layout
+{
+    background-color: #FFDE1D !important;
+}
+.logo
+{
+    padding-top: 30px;
+    max-width: 60%; /* or to whatever you want here */
+    max-height: auto; /* or to whatever you want here */
+}
+.login-box .toolbar
+{
+    background: #759147 none repeat scroll 0 0;
+}
+.login-layout .widget-box
+{
+    background-color: #fff;
+    padding: 0;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    border: 2px solid #527473;
+    border-radius: 0px;
+}
+.login-layout .widget-box .widget-main
+{
+    background: #FFFEFD;
+    margin-top: 20px;
+}
+.login-box .toolbar > div
+{
+    padding: 1px;
+}
+.login-layout .widget-box .widget-body .toolbar > div > a
+{
+    color: #fff;
+}
+.widget-main h4
+{
+    margin: 0;
+}
+
+.widget-main .btn-group-sm > .btn, .btn-sm
+{
+    padding: 0;
+}
+.widget-main .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img
+{
+    margin: 0 auto;
+}
+
+.padTop20
+{
+    padding-top: 20px;
+}
+/*Dashboard*/
+.navbar
+{
+    background: #FFDE1D none repeat scroll 0 0;
+}
+.ace-nav > li.light-blue > a
+{
+    background-color: #384184;
+}
+.ace-nav > li.light-blue > a:focus, .ace-nav > li.light-blue > a:hover, .ace-nav > li.open.light-blue > a
+{
+    background-color: #384184;
+}
+.no-skin .nav-list > li.active > a
+{
+    color: #384184;
+}
+/*Buttons*/
+/* Green Button */
+.btn-green, .btn-green.focus, .btn-green:focus, .btn-green:hover, .btn-green:active
+{
+    background-color: #4A6230 !important;
+    border-color: #4A6230;
+}
+/* Orange Button */
+.btn-orange, .btn-orange.focus, .btn-orange:focus, .btn-orange:hover, .btn-orange:active
+{
+    background-color: #F15934 !important;
+    border-color: #F15934;
+}
+/* Yellow Button */
+.btn-yellow, .btn-yellow.focus, .btn-yellow:focus, .btn-yellow:hover, .btn-yellow:active
+{
+    background-color: #EF9B0F !important;
+    border-color: #EF9B0F;
+    color:#fff !important;
+}
+.yellow
+{
+    color: #EF9B0F;
+}
+.breadcrumbs
+{
+    /*background-color:#fff77d;*/
+}
+.page-header h1{color:#ef9b0f}
+h4{color:#49632F}
+
+.nav-list > li > .submenu li > .submenu li > .submenu{
+    display: none;
+}
+.no-skin .nav-list > li .submenu > li .submenu {
+    background-color: #fff;
+    border-color: #e5e5e5;
+}
+.nav-list li.open > .submenu, .nav-list > li .submenu.collapsing, .nav-list > li > .submenu li.open > .submenu, .nav-list > li > .submenu li.open > .submenu li.open > .submenu{
+    display: block;
+}
+h5{background:#811A74;padding:10px;font-size:14px;font-weight:bold;color:#fff;}
+.forgot-password-link{color:#427fed !important;font-weight: normal;font-size:12px;margin-left:0!important;text-shadow: none!important;margin-bottom: 10px!important;}
