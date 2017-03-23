@@ -10,9 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "menu_header")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class MenuHeader
     implements Serializable
 {
@@ -32,6 +36,7 @@ public class MenuHeader
     private String description;
 
     @Embedded
+    @JsonIgnore
     Auditable auditTrail;
 
 

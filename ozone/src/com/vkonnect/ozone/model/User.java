@@ -56,9 +56,11 @@ public class User
     private String phone;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private HintQuestion question;
 
     @Column(name = "answer")
+    @JsonIgnore
     private String answer;
 
     @Temporal(TemporalType.TIMESTAMP)

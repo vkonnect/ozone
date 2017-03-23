@@ -11,9 +11,13 @@ import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 @Embeddable
 @Access(AccessType.PROPERTY)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class KeyPerson
     implements Serializable
 {
@@ -38,6 +42,7 @@ public class KeyPerson
     private String phone;
 
     @Embedded
+    @JsonIgnore
     Auditable auditTrail;
 
 

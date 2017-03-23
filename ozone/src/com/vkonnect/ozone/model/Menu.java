@@ -10,9 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "menu")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Menu
     implements Serializable
 {
@@ -30,6 +34,16 @@ public class Menu
     @Column(name = "url")
     private String url;
 
+    @Column(name = "parent_menu")
+    private String parentmenu;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "display_order")
+    private int displayorder;
+
+
     @Column(name = "description")
     private String description;
 
@@ -37,6 +51,7 @@ public class Menu
     private byte[] icon;
 
     @Embedded
+    @JsonIgnore
     Auditable auditTrail;
 
 
@@ -64,27 +79,71 @@ public class Menu
     }
 
 
-    public String getURL ()
-    {
-        return url;
-    }
-
-
-    public void setURL (String aURL)
-    {
-        this.url = aURL;
-    }
-
-
     public String getDescription ()
     {
         return description;
     }
 
-    public void setDescription  (String aDescription )
+
+    public void setDescription (String aDescription)
     {
         this.description = aDescription;
     }
+
+
+    public String getUrl ()
+    {
+        return url;
+    }
+
+
+    public void setUrl (String url)
+    {
+        this.url = url;
+    }
+
+
+    public String getParentmenu ()
+    {
+        return parentmenu;
+    }
+
+
+    public void setParentmenu (String parentmenu)
+    {
+        this.parentmenu = parentmenu;
+    }
+
+
+    public String getName ()
+    {
+        return name;
+    }
+
+
+    public void setName (String name)
+    {
+        this.name = name;
+    }
+
+
+    public int getDisplayorder ()
+    {
+        return displayorder;
+    }
+
+
+    public void setDisplayorder (int displayorder)
+    {
+        this.displayorder = displayorder;
+    }
+
+
+    public byte[] getIcon ()
+    {
+        return icon;
+    }
+
 
     public void setIcon (byte[] aIcon)
     {
