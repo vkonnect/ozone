@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vkonnect.ozone.model.Status;
+import com.vkonnect.ozone.model.University;
 import com.vkonnect.ozone.model.User;
 import com.vkonnect.ozone.services.UserService;
 
@@ -37,6 +38,22 @@ public class UserController {
 		}
 
 	}
+	
+	  @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	    public @ResponseBody Status updateUser (@RequestBody User user)
+	    {
+	        try
+	        {
+	            userService.updateEntity(user);
+	            return new Status(1, "User Updated Successfuly ");
+	        }
+	        catch (Exception e)
+	        {
+	            // e.printStackTrace();
+	            return new Status(0, e.toString());
+	        }
+
+	    }
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody
