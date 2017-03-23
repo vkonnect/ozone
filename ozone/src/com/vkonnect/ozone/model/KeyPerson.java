@@ -17,7 +17,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @Embeddable
 @Access(AccessType.PROPERTY)
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","auditTrail"})
 public class KeyPerson
     implements Serializable
 {

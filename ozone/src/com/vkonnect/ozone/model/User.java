@@ -20,7 +20,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "loginpassword"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "password"})
 public class User
     implements Serializable
 {
@@ -38,10 +38,6 @@ public class User
     @Column(name = "password")
     @JsonIgnore
     private String password;
-
-    @Column(name = "passwordkey")
-    @JsonIgnore
-    private String passwordkey;
 
     @Column(name = "first_name")
     private String firstName;
@@ -105,19 +101,6 @@ public class User
     {
         this.password = password;
     }
-
-
-    public String getPasswordkey ()
-    {
-        return passwordkey;
-    }
-
-
-    public void setPasswordkey (String passwordkey)
-    {
-        this.passwordkey = passwordkey;
-    }
-
 
     public String getFirstName ()
     {

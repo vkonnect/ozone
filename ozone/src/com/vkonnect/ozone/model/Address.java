@@ -9,9 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "Address")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","auditTrail"})
 public class Address
     implements Serializable
 {
