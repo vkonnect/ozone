@@ -3,6 +3,7 @@ package com.vkonnect.ozone.services;
 
 import java.util.List;
 
+import com.vkonnect.ozone.dto.UserDTO;
 import com.vkonnect.ozone.model.User;
 
 
@@ -12,7 +13,7 @@ public interface UserService
         throws Exception;
 
 
-    public User getEntityById (long id)
+    public UserDTO getEntityById (long id)
         throws Exception;
 
 

@@ -1,11 +1,15 @@
 package com.vkonnect.ozone.services;
 
 
+import java.util.Date;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vkonnect.ozone.dao.UserPool;
+import com.vkonnect.ozone.dto.HintQuestionDTO;
+import com.vkonnect.ozone.dto.UserDTO;
 import com.vkonnect.ozone.model.User;
 import com.vkonnect.ozone.utils.CipherUtil;
 
@@ -32,10 +36,12 @@ public class UserServiceImpl
 
 
     @Override
-    public User getEntityById (long id)
+    public UserDTO getEntityById (long id)
         throws Exception
     {
-        return userPool.getEntityById(id);
+        User user = userPool.getEntityById(id);
+       
+    	return marshallUser(user);
     }
 
 
@@ -70,4 +76,24 @@ public class UserServiceImpl
     {
         return userPool.updateEntity(user);
     }
+    
+	public UserDTO marshallUser(User anUser) {
+		UserDTO userDTO = new UserDTO();
+		userDTO.id = anUser.getId();
+
+		userDTO.username = anUser.getUsername();
+
+		userDTO.firstName = anUser.getFirstName();
+
+		userDTO.lastName = anUser.getLastName();
+
+		userDTO.email = anUser.getEmail();
+
+		userDTO.phone = anUser.getPhone();
+
+		userDTO.question = anUser.getQuestion().getId();
+
+		userDTO.answer = anUser.getAnswer();
+		return userDTO;
+	}
 }
