@@ -1,11 +1,11 @@
-package com.vkonnect.ozone.model;
+package com.vkonnect.ozone.dto;
 
 
 /**
  * The model for accepting user credentials
  *  
  */
-public class Login
+public class LoginDTO
 {
     /**
      * The field to hold username

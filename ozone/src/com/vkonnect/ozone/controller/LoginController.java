@@ -10,10 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.vkonnect.ozone.model.Login;
+import com.vkonnect.ozone.dto.LoginDTO;
+import com.vkonnect.ozone.dto.ResetPasswordDTO;
 import com.vkonnect.ozone.model.Status;
 import com.vkonnect.ozone.services.UserService;
 
@@ -47,7 +47,7 @@ public class LoginController
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Response login (@RequestBody Login loginStruct)
+    public Response login (@RequestBody LoginDTO loginStruct)
     {
         String userName = loginStruct.username;
         String userPassword = loginStruct.password;
@@ -106,13 +106,12 @@ public class LoginController
         return res;
     }
 
-    @RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
+    @RequestMapping(value = "/forgotpassword", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody
-	Status forgotPassword(@RequestParam("username") String userName, @RequestParam("id") long hintQuestionId, 
-							@RequestParam("answer") String hintAnswer, @RequestParam("newPassword") String newPassword) {
+	Status forgotPassword(@RequestBody ResetPasswordDTO restpasswordDTO) {
 
 		try {
-			userService.updateUserPassword(userName, hintQuestionId, hintAnswer, newPassword);
+			userService.updateUserPassword(restpasswordDTO.username, restpasswordDTO.hintquestionid, restpasswordDTO.answer, restpasswordDTO.newpassword);
 			return new Status(1, "User password updated Successfully !");
 		} catch (Exception e) {
 			return new Status(0, e.toString());
