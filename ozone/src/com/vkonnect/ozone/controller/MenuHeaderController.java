@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vkonnect.ozone.model.MenuHeader;
 import com.vkonnect.ozone.model.Status;
-import com.vkonnect.ozone.model.University;
 import com.vkonnect.ozone.services.MenuHeaderService;
 
 @Controller

@@ -4,11 +4,10 @@ package com.vkonnect.ozone.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "password"})
+@JsonIgnoreProperties({"password"})
 public class UserDTO
     implements Serializable
 {
@@ -19,7 +18,6 @@ public class UserDTO
 
     public String username;
 
-    @JsonIgnore
     private String password;
 
     public String firstName;

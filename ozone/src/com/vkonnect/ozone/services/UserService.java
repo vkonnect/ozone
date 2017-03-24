@@ -17,7 +17,7 @@ public interface UserService
         throws Exception;
 
 
-    public List<User> getEntityList ()
+    public List<UserDTO> getEntityList ()
         throws Exception;
 
 

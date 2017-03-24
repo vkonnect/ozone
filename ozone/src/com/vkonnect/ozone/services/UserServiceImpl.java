@@ -1,14 +1,12 @@
 package com.vkonnect.ozone.services;
 
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vkonnect.ozone.dao.UserPool;
-import com.vkonnect.ozone.dto.HintQuestionDTO;
 import com.vkonnect.ozone.dto.UserDTO;
 import com.vkonnect.ozone.model.User;
 import com.vkonnect.ozone.utils.CipherUtil;
@@ -46,10 +44,11 @@ public class UserServiceImpl
 
 
     @Override
-    public List<User> getEntityList ()
+    public List<UserDTO> getEntityList ()
         throws Exception
     {
-        return userPool.getEntityList();
+        List<User> userList =  userPool.getEntityList();
+        return marshallUser(userList);
     }
 
 
@@ -97,6 +96,21 @@ public class UserServiceImpl
 		return userDTO;
 	}
 	
+	public List<UserDTO> marshallUser(List<User> users) {
+
+		List<UserDTO> dtos = new ArrayList<UserDTO>();
+		if (users != null) {
+			for (User user : users) {
+				if (user != null) {
+					UserDTO dto = marshallUser(user);
+					if (dto != null) {
+						dtos.add(dto);
+					}
+				}
+			}
+		}
+		return dtos;
+	}
 	@Override
 	public boolean updateUserPassword(String userName, long hintQuestionId, String hintAnswer, String newPassword) throws Exception {
 		return userPool.updateUserPassword(userName, hintQuestionId, hintAnswer, newPassword);

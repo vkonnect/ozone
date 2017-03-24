@@ -1,7 +1,6 @@
 package com.vkonnect.ozone.dao;
 
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vkonnect.ozone.model.Auditable;
 import com.vkonnect.ozone.model.University;
-import com.vkonnect.ozone.model.User;
 
 
 public class UniversityPoolImpl

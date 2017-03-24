@@ -70,9 +70,9 @@ public class UserController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public @ResponseBody
-	List<User> getUser() {
+	List<UserDTO> getUser() {
 
-		List<User> userList = null;
+		List<UserDTO> userList = null;
 		try {
 			userList = userService.getEntityList();
 

@@ -6,9 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vkonnect.ozone.dao.KeyPersonPool;
-import com.vkonnect.ozone.dao.UniversityPool;
 import com.vkonnect.ozone.model.KeyPerson;
-import com.vkonnect.ozone.model.University;
 
 
 public class keyPersonServiceImpl

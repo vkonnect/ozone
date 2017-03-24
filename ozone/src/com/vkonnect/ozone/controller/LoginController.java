@@ -1,8 +1,6 @@
 package com.vkonnect.ozone.controller;
 
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vkonnect.ozone.model.Login;
 import com.vkonnect.ozone.model.Status;
-import com.vkonnect.ozone.model.User;
 import com.vkonnect.ozone.services.UserService;
 
 
