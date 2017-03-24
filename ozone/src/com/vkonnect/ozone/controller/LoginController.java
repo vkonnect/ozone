@@ -23,15 +23,8 @@ import com.vkonnect.ozone.services.UserService;
  */
 @Controller
 @RequestMapping("/system")
-public class LoginController
+public class LoginController extends BaseController
 {
-
-
-    @Autowired
-    private HttpSession httpSession;
-
-    @Autowired(required = true)
-    private HttpServletRequest request;
 
     @Autowired // two types : Singleton and Prototype
     UserService userService;

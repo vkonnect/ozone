@@ -19,7 +19,7 @@ import com.vkonnect.ozone.services.UserService;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController{
 
 	@Autowired // two types : Singleton and Prototype
 	UserService userService;
