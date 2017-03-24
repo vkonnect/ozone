@@ -65,6 +65,7 @@
 	<bean id="hintQuestionServices" class="com.vkonnect.ozone.services.HintQuestionServiceImpl"></bean>
 	<bean id="universityServices" class="com.vkonnect.ozone.services.UniversityServiceImpl"></bean>
 	<bean id="universityPool" class="com.vkonnect.ozone.dao.UniversityPoolImpl"></bean>
+	<bean id="userDTO" class="com.vkonnect.ozone.dto.UserDTO"></bean>
 	<!--  <bean id="keyPersonServices" class="com.vkonnect.ozone.services.keyPersonServiceImpl"></bean>
 	<bean id="keyPersonPool" class="com.vkonnect.ozone.dao.KeyPersonPoolImpl"></bean>-->
 </beans>
