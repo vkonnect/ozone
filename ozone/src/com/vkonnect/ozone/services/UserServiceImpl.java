@@ -96,4 +96,9 @@ public class UserServiceImpl
 		userDTO.answer = anUser.getAnswer();
 		return userDTO;
 	}
+	
+	@Override
+	public boolean updateUserPassword(String userName, long hintQuestionId, String hintAnswer, String newPassword) throws Exception {
+		return userPool.updateUserPassword(userName, hintQuestionId, hintAnswer, newPassword);
+	}
 }

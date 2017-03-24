@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vkonnect.ozone.model.Login;
+import com.vkonnect.ozone.model.Status;
 import com.vkonnect.ozone.model.User;
 import com.vkonnect.ozone.services.UserService;
 
@@ -107,4 +109,17 @@ public class LoginController
         return res;
     }
 
+    @RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
+	public @ResponseBody
+	Status forgotPassword(@RequestParam("username") String userName, @RequestParam("id") long hintQuestionId, 
+							@RequestParam("answer") String hintAnswer, @RequestParam("newPassword") String newPassword) {
+
+		try {
+			userService.updateUserPassword(userName, hintQuestionId, hintAnswer, newPassword);
+			return new Status(1, "User password updated Successfully !");
+		} catch (Exception e) {
+			return new Status(0, e.toString());
+		}
+
+	}
 }

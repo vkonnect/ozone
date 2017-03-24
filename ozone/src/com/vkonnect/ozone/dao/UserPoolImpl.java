@@ -9,9 +9,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vkonnect.ozone.model.Auditable;
+import com.vkonnect.ozone.model.HintQuestion;
 import com.vkonnect.ozone.model.User;
 
 
@@ -141,4 +143,29 @@ public class UserPoolImpl
 
         return true;
     }
+    
+    @Override
+	public boolean updateUserPassword(String userName, long hintQuestionId, String hintAnswer, String newPassword) throws Exception {
+		session = sessionFactory.openSession();
+		int update = 0;
+		try {
+			tx = session.beginTransaction();
+			HintQuestion hintAns = (HintQuestion)session.createCriteria(HintQuestion.class).add(Restrictions.eq("id", hintQuestionId)).uniqueResult();
+			if(hintAns != null && hintAnswer.equalsIgnoreCase(hintAns.getRemark())) {
+				String hqlUpdate = "UPDATE user SET password=:newPassword WHERE username=:userName";
+				Query query = session.createQuery(hqlUpdate);
+				query.setParameter("newPassword", newPassword);
+				query.setParameter("userName", userName);
+				
+				update = query.executeUpdate();
+			}
+			if(update > 0)
+				return true;
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("Found Exception in UserPoolImpl.updateUserPassword():: "+ex);
+			return false;
+		}
+		return false;
+	}
 }

@@ -31,4 +31,6 @@ public interface UserPool
 
     public boolean updateEntity (User user)
         throws Exception;
+    
+    public boolean updateUserPassword(String userName, long hintQuestionId, String hintAnswer, String newPassword) throws Exception;
 }

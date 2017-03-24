@@ -1,5 +1,6 @@
 package com.vkonnect.ozone.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.vkonnect.ozone.dto.UserDTO;
 import com.vkonnect.ozone.model.Status;
 import com.vkonnect.ozone.model.User;
 import com.vkonnect.ozone.services.UserService;
@@ -38,27 +39,11 @@ public class UserController {
 		}
 
 	}
-	
-	  @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	    public @ResponseBody Status updateUser (@RequestBody User user)
-	    {
-	        try
-	        {
-	            userService.updateEntity(user);
-	            return new Status(1, "User Updated Successfuly ");
-	        }
-	        catch (Exception e)
-	        {
-	            // e.printStackTrace();
-	            return new Status(0, e.toString());
-	        }
-
-	    }
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody
-	UserDTO getUser(@PathVariable("id") long id) {
-		UserDTO user = null;
+	User getUser(@PathVariable("id") long id) {
+		User user = null;
 		try {
 			user = userService.getEntityById(id);
 
@@ -90,6 +75,44 @@ public class UserController {
 		try {
 			userService.deleteEntity(id);
 			return new Status(1, "User deleted Successfully !");
+		} catch (Exception e) {
+			return new Status(0, e.toString());
+		}
+
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public @ResponseBody
+	List<User> searchUserList(@RequestParam("searchText") String searchText) {
+		List<User> userList = null;
+		try {
+			userList = userService.searchUserEntity(searchText);
+			return userList;
+		} catch (Exception e) {
+			return new ArrayList<User>();
+		}
+	}
+	@RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+	public @ResponseBody
+	Status updateUser(@PathVariable("id") long id) {
+
+		try {
+			userService.updateUserEntity(id);
+			return new Status(1, "User deleted Successfully !");
+		} catch (Exception e) {
+			return new Status(0, e.toString());
+		}
+
+	}
+	
+	@RequestMapping(value = "user/forgotpassword", method = RequestMethod.GET)
+	public @ResponseBody
+	Status forgotPassword(@RequestParam("username") String userName, @RequestParam("id") long hintQuestionId, 
+							@RequestParam("answer") String hintAnswer, @RequestParam("newPassword") String newPassword) {
+
+		try {
+			userService.updateUserPassword(userName, hintQuestionId, hintAnswer, newPassword);
+			return new Status(1, "User password updated Successfully !");
 		} catch (Exception e) {
 			return new Status(0, e.toString());
 		}
