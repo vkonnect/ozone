@@ -1,11 +1,10 @@
 package com.vkonnect.ozone.controller;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vkonnect.ozone.dto.LoginDTO;
 import com.vkonnect.ozone.dto.ResetPasswordDTO;
-import com.vkonnect.ozone.model.Status;
 import com.vkonnect.ozone.services.UserService;
 
 
@@ -35,47 +33,29 @@ public class LoginController extends BaseController
     /**
      * Facilitates user to authenticate itelf into the system and get privelaged to access system resources.
      * 
-     * @param loginStruct
+     * @param loginDTO
      * @return A Response object
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Response login (@RequestBody LoginDTO loginStruct)
-    {
-        String userName = loginStruct.username;
-        String userPassword = loginStruct.password;
+	public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO) {
+		String userName = loginDTO.username;
+		String userPassword = loginDTO.password;
 
-        // To be verfied at DB.
-        boolean authenticated = true;
-        try
-        {
-            authenticated = userService.verifyUser(userName, userPassword);
-        }
-        catch (Exception e)
-        {
-            // TODO Auto-generated catch block
-            // e.printStackTrace();
-        }
-        String message = "";
-        int responseCode = 200;
-        if (authenticated)
-        {
-            message = "Login Sucessfull";
-            httpSession = request.getSession(true);
-            httpSession.setAttribute("Secured token", httpSession.getId());
-            httpSession.setMaxInactiveInterval(cSESSION_TIMEOUT_SEC);
-        }
-        else
-        {
-            message = "Login Unsucessfull";
-            responseCode = 401;
-        }
-
-        Response res = new Response();
-        res.setResponseCode(responseCode);
-        res.setMessage(message);
-        return res;
-    }
+		boolean authenticated = true;
+		try {
+			authenticated = userService.verifyUser(userName, userPassword);
+			httpSession = request.getSession(true);
+			httpSession.setAttribute("Secured token", httpSession.getId());
+			httpSession.setMaxInactiveInterval(cSESSION_TIMEOUT_SEC);
+		} catch (Exception e) {
+			return new ResponseEntity<String>("Login Unsucessfull", HttpStatus.UNAUTHORIZED);
+		}
+		if (!authenticated) {
+			return new ResponseEntity<String>("Login Unsucessfull", HttpStatus.UNAUTHORIZED);
+		}
+		return new ResponseEntity<String>("Login Sucessfull", HttpStatus.OK);
+	}
 
 
     // TODO : user already logged in but trying to logged in again
@@ -90,25 +70,25 @@ public class LoginController extends BaseController
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Response logout ()
+    public ResponseEntity<String> logout ()
     {
         Response res = new Response();
         res.setMessage("Logout Sucessfull");
         httpSession = request.getSession();
         httpSession.invalidate();
-        return res;
+        return new ResponseEntity<String>("Logout Successfully !", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/forgotpassword", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody
-	Status forgotPassword(@RequestBody ResetPasswordDTO restpasswordDTO) {
+	ResponseEntity<String> forgotPassword(@RequestBody ResetPasswordDTO restpasswordDTO) {
 
 		try {
 			userService.updateUserPassword(restpasswordDTO.username, restpasswordDTO.hintquestionid, restpasswordDTO.answer, restpasswordDTO.newpassword);
-			return new Status(1, "User password updated Successfully !");
 		} catch (Exception e) {
-			return new Status(0, e.toString());
+			e.printStackTrace();
+			return new ResponseEntity<String>("User password reset failed !", HttpStatus.EXPECTATION_FAILED);
 		}
-
+		return new ResponseEntity<String>("User password reset Successfully !", HttpStatus.OK);
 	}
 }
