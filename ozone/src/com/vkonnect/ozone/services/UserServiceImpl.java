@@ -90,7 +90,7 @@ public class UserServiceImpl
 
 		userDTO.phone = anUser.getPhone();
 
-		userDTO.question = anUser.getQuestion().getId();
+		//userDTO.question = anUser.getQuestion().getId();
 
 		userDTO.answer = anUser.getAnswer();
 		return userDTO;
