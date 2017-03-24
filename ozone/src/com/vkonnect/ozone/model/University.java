@@ -28,10 +28,10 @@ public class University
     @Column(name = "id", updatable = false, nullable = false)
     private long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
-    @Column(name = "code")
+    @Column(name = "code", unique = true)
     private String code;
 
     @Column(name = "profile")

@@ -37,7 +37,7 @@ public class Menu
     @Column(name = "parent_menu")
     private String parentmenu;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "display_order")
