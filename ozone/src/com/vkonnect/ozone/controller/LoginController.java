@@ -65,7 +65,6 @@ public class LoginController extends BaseController
     /**
      * Facilitates user to authenticate itelf into the system and get privelaged to access system resources.
      * 
-     * @param loginStruct
      * @return A Response object
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
